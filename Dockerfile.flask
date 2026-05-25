@@ -1,0 +1,18 @@
+# 1. Use the same lightweight Python image
+FROM python:3.11-slim
+
+# 2. Set the working directory
+WORKDIR /app
+
+# 3. Copy requirements and install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 4. Copy your Flask frontend code (Make sure this matches your actual filename!)
+COPY flask_frontend.py .
+
+# 5. Expose Flask's default port
+EXPOSE 5000
+
+# 6. Start the Flask app
+CMD ["python", "flask_frontend.py"]

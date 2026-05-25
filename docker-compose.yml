@@ -1,0 +1,19 @@
+services:
+  bento_server:
+    image: weather_prediction_service:cszplnsx6g4mxeus  # <-- Update this tag!
+    ports:
+      - "3000:3000"
+
+  fastapi_server:
+    image: fast_backend:latest
+    ports:
+      - "8000:8000"
+    depends_on:
+      - bento_server
+
+  flask_frontend:
+    image: flask_frontend:latest
+    ports:
+      - "5001:5000"
+    depends_on:
+      - fastapi_server

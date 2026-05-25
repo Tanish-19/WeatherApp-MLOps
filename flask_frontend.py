@@ -24,8 +24,9 @@ def submit():
     w = float(request.form['wind_speed'])
     
     # Send it to our FastAPI backend (which runs on port 8000 by default)
+   # Change it to look exactly like this:
     fastapi_response = requests.post(
-        "http://127.0.0.1:8000/api/predict",
+        "http://fastapi_server:8000/api/predict",
         json={"humidity": h, "wind_speed": w}
     )
     
@@ -34,4 +35,5 @@ def submit():
 
 if __name__ == '__main__':
     # Run Flask on port 5000
-    app.run(port=5000)
+    
+    app.run(host="0.0.0.0", port=5000)

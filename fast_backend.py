@@ -16,7 +16,7 @@ def get_prediction(data: WeatherData):
     
     # Send the data to the BentoML service
     bento_response = requests.post(
-        "http://127.0.0.1:3000/predict",
+        "http://bento_server:3000/predict",
         json={"input_data": formatted_data}
     )
     
